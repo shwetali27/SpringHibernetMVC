@@ -23,6 +23,7 @@ import com.bridgelabz.domain.validation.CountryValidator;
 
 @Controller
 @RequestMapping("/countryForm.html")
+
 @SessionAttributes("country")
 public class CountryForm {
 
@@ -35,7 +36,7 @@ public class CountryForm {
 	//for binding the for related to which data is required in which format
 	@InitBinder
 	public void initBinder(WebDataBinder dataBinder) {
-
+		System.out.println("Inside InitBinder");
 		dataBinder.setDisallowedFields(new String[] { "id" });
 		dataBinder.setRequiredFields(new String[] { "name", "area", "population", "currency" });
 		dataBinder.registerCustomEditor(String.class, new StringTrimmerEditor(false));
@@ -79,5 +80,5 @@ public class CountryForm {
 		status.setComplete();
 		return "redirect:countryList.html";
 	}
-
+	
 }

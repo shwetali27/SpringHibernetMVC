@@ -19,17 +19,12 @@
 		method="post">
 		<table>
 			<tr>
-				<td align="right" valign="bottom"><c:choose>
-						<c:when test="${Country}">
-							<button type="submit" name="create">Create</button>
-						</c:when>
-						<c:otherwise>
+				<td align="right" valign="bottom">
 							<button type="submit" name="delete"
 								onclick="return confirm('Are you sure you want to delete ${country.name}?')">
 								Delete</button>
 							<button type="submit" name="update">Save</button>
-						</c:otherwise>
-					</c:choose></td>
+				</td>
 			</tr>
 			<tr>
 				<td>

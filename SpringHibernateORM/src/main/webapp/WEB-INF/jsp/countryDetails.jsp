@@ -13,7 +13,9 @@
 	<h1>
 		<spring:message code="application.name" />
 	</h1>
+		
 	<table class="silver" width="260">
+		
 		<tr>
 			<th colspan=2><spring:message code="country.details" /></th>
 		</tr>
@@ -39,8 +41,30 @@
 			<td>${country.currency}</td>
 		</tr>
 	</table>
+	
+	<form action="countryDetails.html"
+		method="post">
+	<table>
+		<tr>
+			<td align="right" valign="bottom">
+				<button type="submit" name="delete"
+					onclick="return confirm('Are you sure you want to delete ${country.name}?')">Delete</button>
+				</td>
+			</tr>
+	</table>
+	</form>
+	<table>
+		<tr>
+			<td align="right" valign="bottom">
+					<button type="submit" onClick="location.href='countryForm.html?id=${country.id}'">edit</button>
+				</td>
+			</tr>
+	</table>
+	
 	<a href="countryList.html"> &lt;&lt;<spring:message
 			code="navigation.back" />
 	</a>
+
 </body>
 </html>
+

@@ -11,9 +11,12 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bridgelabz.domain.Country;
@@ -28,7 +31,7 @@ public class CountryController {
 	// displaying the info about project
 	@RequestMapping(value = "/info.html")
 	public ModelAndView helloWorld() {
-		System.out.println("inside controller");
+		System.out.println("inside controller Country");
 		String message = "Hello, This Program is to Display Country List and Details Using Spring-Hibernate and database";
 		return new ModelAndView("helloworld", "message", message);
 	}
@@ -39,12 +42,12 @@ public class CountryController {
 	public Collection<Country> getCountries() {
 		return worldService.getAllCountries();
 	}
-
-	//details of each countries by id
-	@RequestMapping("/countryDetails.html")
-	public Country getCountry(@RequestParam(value = "id", required = true) int countryId) {
-		System.out.println("inside controller");
-		return worldService.getCountryById(countryId);
+	
+	@RequestMapping(value="/countryD/{id}", method = RequestMethod.GET)
+	public String remove(@RequestParam("id") int id, Country country, BindingResult result, SessionStatus status) {
+		System.out.println("Inside CountryForm delete Country:" + id);
+		worldService.deleteCountry(country);
+		status.setComplete();
+		return "redirect:countryList.html";
 	}
-
 }
