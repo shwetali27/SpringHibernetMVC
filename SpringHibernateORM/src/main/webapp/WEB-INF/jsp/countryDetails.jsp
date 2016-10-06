@@ -42,23 +42,15 @@
 		</tr>
 	</table>
 	
-	<form action="countryDetails.html"
-		method="post">
+	
 	<table>
-		<tr>
-			<td align="right" valign="bottom">
-				<button type="submit" name="delete"
-					onclick="return confirm('Are you sure you want to delete ${country.name}?')">Delete</button>
-				</td>
-			</tr>
-	</table>
-	</form>
-	<table>
-		<tr>
-			<td align="right" valign="bottom">
-					<button type="submit" onClick="location.href='countryForm.html?id=${country.id}'">edit</button>
-				</td>
-			</tr>
+		<tr align="right" valign="bottom">
+			<button type="submit" onClick="location.href='countryForm.html?id=${country.id}'">edit</button>
+				<form action="countryDetails.html" method="post">
+					<button type="submit" name="delete"
+						onclick="return confirm('Are you sure you want to delete ${country.name}?')">Delete</button>
+				</form>	
+		</tr>
 	</table>
 	
 	<a href="countryList.html"> &lt;&lt;<spring:message
