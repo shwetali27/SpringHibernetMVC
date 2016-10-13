@@ -42,12 +42,4 @@ public class CountryController {
 	public Collection<Country> getCountries() {
 		return worldService.getAllCountries();
 	}
-	
-	@RequestMapping(value="/countryD/{id}", method = RequestMethod.GET)
-	public String remove(@RequestParam("id") int id, Country country, BindingResult result, SessionStatus status) {
-		System.out.println("Inside CountryForm delete Country:" + id);
-		worldService.deleteCountry(country);
-		status.setComplete();
-		return "redirect:countryList.html";
-	}
 }
